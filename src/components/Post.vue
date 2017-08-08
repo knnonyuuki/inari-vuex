@@ -1,7 +1,7 @@
 <template>
   <div class="Post">
     <div class="upper">
-      <post-body postId="1234"></post-body>
+      <post-body :postId="postId"></post-body>
     </div>
     <div class="bottom">
       <comment-box></comment-box>
@@ -13,7 +13,12 @@
   import CommentBox from './Commentbox'
   export default {
     name: 'post',
-    components: { PostBody, CommentBox }
+    components: { PostBody, CommentBox },
+    computed: {
+      postId: function () {
+        return this.$route.params.id
+      }
+    }
   }
 </script>
 <style scoped>
